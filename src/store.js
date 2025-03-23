@@ -1,26 +1,37 @@
 export const initialStore=()=>{
   return{
-    message: null,
-    todos: [
-      {
-        id: 1,
-        title: "Make the bed",
-        background: null,
-      },
-      {
-        id: 2,
-        title: "Do my homework",
-        background: null,
-      }
-    ]
+    contactsArray:[],
+    singleContact:{}
+}
+}
+export default function storeReducer(store, action = {}) {
+
+
+if(action.type == "set_contact_list"){
+    return{
+      ...store,
+      contactsArray: action.payload
+    }
+}
+
+
+if(action.type == "set_single_contact"){
+  return{
+    ...store,
+    singleContact: action.payload
   }
 }
 
-export default function storeReducer(store, action = {}) {
+
+
+
+
+
+
   switch(action.type){
     case 'add_task':
 
-      const { id,  color } = action.payload
+      const { id,  color } = action.payload;
 
       return {
         ...store,
