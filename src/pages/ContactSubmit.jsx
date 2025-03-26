@@ -32,14 +32,14 @@ export const ContactSubmit = () => {
             }
         }
 
-        fetch("https://playground.4geeks.com/contact/agendas/username/contacts", option)
+        fetch("https://playground.4geeks.com/contact/agendas/brandon/contacts", option)
         .then((resp) => resp.json())
         .then((data)=> console.log('contact created', data))
       }
 
 
       const updateContact = (id) => {
-
+        if(!id) alert("there is no ID")
 
         const option = {
             method: 'PUT',
@@ -54,7 +54,7 @@ export const ContactSubmit = () => {
             }
         }
 
-        fetch("https://playground.4geeks.com/contact/agendas/username/contacts/"+id,option)
+        fetch("https://playground.4geeks.com/contact/agendas/brandon/contacts/"+id,option)
         .then((resp) => resp.json())
         .then((data)=> console.log('UPDATED CONTACT', data))
       }

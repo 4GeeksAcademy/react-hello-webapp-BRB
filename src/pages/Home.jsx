@@ -36,7 +36,7 @@ export const Home = () => {
   }
   const getData = () =>{
 
-	  fetch("https://playground.4geeks.com/contact/agendas/username/contacts")
+	  fetch("https://playground.4geeks.com/contact/agendas/brandon/contacts")
 	  .then((resp)=> {
 		console.log('resp:', resp)
 		if(resp.ok == false){
@@ -64,13 +64,13 @@ export const Home = () => {
   console.log("store.contactsArray:", store.contactsArray)
 
 	return (
-		<div className="text-center mt-5">
+		<div className="text-center mt-5" >
 			{
 				store.contactsArray &&
 				store.contactsArray.length > 0 ? 
 				store.contactsArray.map((contact)=>{
 					return(
-						<div className='m-3 bg-light p-3'>
+						<div className='m-3 bg-light p-3'key={contact.id}>
 							<div>name: {contact.name}</div>
 							<div>email: {contact.email}</div>
 							<div>phone: {contact.phone}</div>
