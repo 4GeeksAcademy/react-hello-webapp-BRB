@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import useGlobalReducer from '../hooks/useGlobalReducer';
+import { number } from 'prop-types';
 
 
 
@@ -58,17 +59,18 @@ export const ContactSubmit = () => {
         .then((resp) => resp.json())
         .then((data)=> console.log('UPDATED CONTACT', data))
       }
+
     
     return(
 
         <div>
-           <input onChange={(e)=>setName(e.target.value)} type="text" placeholder='name'/>
-           <input onChange={(e)=>setAddress(e.target.value)} type="text" placeholder='address'/>
-           <input onChange={(e)=>setPhone(e.target.value)} type="text" placeholder='phone'/>
-           <input onChange={(e)=>setEmail(e.target.value)} type="text" placeholder='email'/>
-           <button onClick={submitContact} >Submit</button>
-           <button onClick={() => updateContact(store.singleContact.id)} >
+           <input onChange={(e)=>setName(e.target.value)} type="text" placeholder='name'value = {name}/>
+           <input onChange={(e)=>setAddress(e.target.value)} type="text" placeholder='address' value = {address}/>
+           <input onChange={(e)=>setPhone(e.target.value)} type="text" placeholder='phone' value = {phone}/>
+           <input onChange={(e)=>setEmail(e.target.value)} type="text" placeholder='email' value = {email}/>
+           <button onClick={() => updateContact(store.singleContact.id)}>
             Update
             </button>
+          
         </div>
 )};

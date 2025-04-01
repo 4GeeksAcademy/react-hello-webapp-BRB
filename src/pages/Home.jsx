@@ -1,7 +1,7 @@
-import rigoImageUrl from "../assets/img/rigo-baby.jpg";
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 import React, {useEffect} from 'react';
 import { Link } from "react-router-dom";
+// import { ContactSubmit } from "./ContactSubmit.jsx";
 
 export const Home = () => {
 
@@ -52,12 +52,11 @@ export const Home = () => {
 				type: "set_contact_list",
 				payload: data.contacts
 			})
-	} ) // usestate & map through to create and array
+	} ) 
   }
 
   useEffect(()=> {
 		getData()
-		// {name: 'user1', phone: '1111111111', email: 'email1@email.com', address: 'parkway1', id: 10}
   },[])
 
 
@@ -80,7 +79,7 @@ export const Home = () => {
 										onClick={
 									()=>{
 						
-										dispatch({type:"set_contact_list", payload: contact})
+										dispatch({type:"set_single_contact", payload: contact})
 									}
 								}
 								>Edit</button>
