@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import useGlobalReducer from '../hooks/useGlobalReducer';
+import { useNavigate } from "react-router-dom";
 import { number } from 'prop-types';
 
 
@@ -14,6 +15,7 @@ export const ContactSubmit = () => {
     const [address, setAddress]= useState(store.singleContact.address);
     const [phone, setPhone]= useState(store.singleContact.phone);
     const [email, setEmail]= useState(store.singleContact.email);
+    const navigate = useNavigate();
 
 
 
@@ -60,6 +62,20 @@ export const ContactSubmit = () => {
         .then((data)=> console.log('UPDATED CONTACT', data))
       }
 
+        const deleteContact = (id) => {
+          if(!id) alert("there is no ID")
+
+          const option = {
+            method: 'DELETE'
+          }
+
+          fetch("https://playground.4geeks.com/contact/agendas/brandon/contacts/"+id,option)
+          .then((resp) => resp.json())
+          .then((data)=> console.log('contact deleted', data))
+          
+          navigate('/');
+
+        }
     
     return(
 
@@ -71,6 +87,10 @@ export const ContactSubmit = () => {
            <button onClick={() => updateContact(store.singleContact.id)}>
             Update
             </button>
+            <button onClick={() => deleteContact(store.singleContact.id)}>
+            Delete
+            </button>
           
         </div>
 )};
+
