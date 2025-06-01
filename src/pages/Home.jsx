@@ -1,7 +1,7 @@
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 import React, {useEffect} from 'react';
 import { Link } from "react-router-dom";
-// import { ContactSubmit } from "./ContactSubmit.jsx";
+import { ContactSubmit } from "./ContactSubmit.jsx";
 
 export const Home = () => {
 
@@ -31,12 +31,24 @@ export const Home = () => {
 		return resp.json()
 	})
 	.then((data) => {
-		dispatch({type: "set_contact_list", payload: data.contacts})
+		dispatch({type: "set_contact_list", payload: singleContact})
 	})
   }
   const getData = () =>{
 
-	  fetch("https://playground.4geeks.com/contact/agendas/brandon/contacts")
+	const option = {
+		method: 'GET',
+        // body: JSON.stringify({
+		// 	"slug": "username",
+		// 	"id": 0
+		//   }), 
+        headers: {
+        'Content-Type': 'application/json'
+		}
+
+	}
+
+	  fetch("https://playground.4geeks.com/contact/agendas", option)
 	  .then((resp)=> {
 		console.log('resp:', resp)
 		if(resp.ok == false){
@@ -50,17 +62,17 @@ export const Home = () => {
 	.then((data) => {
 			dispatch({
 				type: "set_contact_list",
-				payload: data.contacts
+				payload: data.singleContact
 			})
 	} ) 
   }
 
   useEffect(()=> {
-		getData()
+		getData();
   },[])
 
 
-  console.log("store.contactsArray:", store.contactsArray)
+ 
 
 	return (
 		<div className="text-center mt-5" >
@@ -79,7 +91,7 @@ export const Home = () => {
 										onClick={
 									()=>{
 						
-										dispatch({type:"set_single_contact", payload: contact})
+										dispatch({type:"set_single_contact", payload: singleContact})
 									}
 								}
 								>Edit</button>

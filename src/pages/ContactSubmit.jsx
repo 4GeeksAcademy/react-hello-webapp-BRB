@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import useGlobalReducer from '../hooks/useGlobalReducer';
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { number } from 'prop-types';
 
 
@@ -35,7 +36,7 @@ export const ContactSubmit = () => {
             }
         }
 
-        fetch("https://playground.4geeks.com/contact/agendas/brandon/contacts", option)
+        fetch("https://playground.4geeks.com/contact/agendas/{name}/contacts", option)
         .then((resp) => resp.json())
         .then((data)=> console.log('contact created', data))
       }
@@ -84,12 +85,14 @@ export const ContactSubmit = () => {
            <input onChange={(e)=>setAddress(e.target.value)} type="text" placeholder='address' value = {address}/>
            <input onChange={(e)=>setPhone(e.target.value)} type="text" placeholder='phone' value = {phone}/>
            <input onChange={(e)=>setEmail(e.target.value)} type="text" placeholder='email' value = {email}/>
-           <button onClick={() => updateContact(store.singleContact.id)}>
-            Update
+          <Link to="/">
+           <button onClick={() => {submitContact(store.singleContact.id)}}>
+            Submit
             </button>
             <button onClick={() => deleteContact(store.singleContact.id)}>
             Delete
             </button>
+          </Link>
           
         </div>
 )};
