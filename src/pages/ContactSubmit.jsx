@@ -36,9 +36,9 @@ export const ContactSubmit = () => {
             }
         }
 
-        fetch("https://playground.4geeks.com/contact/agendas/{name}/contacts", option)
+        fetch("https://playground.4geeks.com/contact/agendas/${name}/contacts", option)
         .then((resp) => resp.json())
-        .then((data)=> console.log('contact created', data))
+        .then((data)=> dispatch({type:"set_single_contact", payload: data.singleContact}))
       }
 
 
@@ -75,7 +75,7 @@ export const ContactSubmit = () => {
           .then((data)=> console.log('contact deleted', data))
           
           navigate('/');
-
+                
         }
     
     return(
@@ -86,7 +86,7 @@ export const ContactSubmit = () => {
            <input onChange={(e)=>setPhone(e.target.value)} type="text" placeholder='phone' value = {phone}/>
            <input onChange={(e)=>setEmail(e.target.value)} type="text" placeholder='email' value = {email}/>
           <Link to="/">
-           <button onClick={() => {submitContact(store.singleContact.id)}}>
+           <button onClick={() => {submitContact(store.singleContact.id)}}> 
             Submit
             </button>
             <button onClick={() => deleteContact(store.singleContact.id)}>
