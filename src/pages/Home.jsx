@@ -31,7 +31,7 @@ export const Home = () => {
 		return resp.json()
 	})
 	.then((data) => {
-		dispatch({type: "set_contact_list", payload: contacts})
+		dispatch({type: "set_contact_list", payload: data})
 	})
   }
   const getData = () =>{
@@ -62,7 +62,7 @@ export const Home = () => {
 	.then((data) => {
 			dispatch({
 				type: "set_contact_list",
-				payload: data.singleContact
+				payload: data.contacts
 			})
 	} ) 
   }

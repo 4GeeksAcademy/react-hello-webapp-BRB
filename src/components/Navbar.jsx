@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 
+
 export const Navbar = () => {
 
 	return (
@@ -19,7 +20,7 @@ export const Navbar = () => {
 									 email:'',
 									 address:''
 									}
-									dispatch({type:"set_single_contact", payload: emptyContact})
+									dispatch({type:"set_single_contact", payload: singleContact})
 								}
 							}
 							className='btn btn-primary'>

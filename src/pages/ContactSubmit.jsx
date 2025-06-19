@@ -36,9 +36,9 @@ export const ContactSubmit = () => {
             }
         }
 
-        fetch("https://playground.4geeks.com/contact/agendas/${name}/contacts", option)
+        fetch("https://playground.4geeks.com/contact/agendas/username/contacts", option)
         .then((resp) => resp.json())
-        .then((data)=> dispatch({type:"set_single_contact", payload: data.singleContact}))
+        .then((data)=> dispatch({ type: "set_single_contact", payload: data }))
       }
 
 
@@ -58,7 +58,7 @@ export const ContactSubmit = () => {
             }
         }
 
-        fetch("https://playground.4geeks.com/contact/agendas/brandon/contacts/"+id,option)
+        fetch("https://playground.4geeks.com/contact/agendas/username/contacts/"+id,option)
         .then((resp) => resp.json())
         .then((data)=> console.log('UPDATED CONTACT', data))
       }
@@ -70,7 +70,7 @@ export const ContactSubmit = () => {
             method: 'DELETE'
           }
 
-          fetch("https://playground.4geeks.com/contact/agendas/brandon/contacts/"+id,option)
+          fetch("https://playground.4geeks.com/contact/agendas/username/contacts/"+id,option)
           .then((resp) => resp.json())
           .then((data)=> console.log('contact deleted', data))
           

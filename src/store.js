@@ -13,12 +13,15 @@ switch(action.type){
       ...store,
       contactsArray: action.payload
     }
+    break;
 
   case "set_single_contact" :
     return{
       ...store,
       singleContact: action.payload
     }
+    break;
+
 
   // case 'add_task':
   //   const { id,  color } = action.payload;
@@ -26,8 +29,8 @@ switch(action.type){
   //     ...store,
   //     todos: store.todos.map((todo) => (todo.id === id ? { ...todo, background: color } : todo))
   //   };
-  // default:
-  //   throw Error('Unknown action.');
+  default:
+    throw Error('Unknown action.');
 }    
 
 
