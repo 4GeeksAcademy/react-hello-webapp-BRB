@@ -61,7 +61,7 @@ export const ContactSubmit = () => {
         fetch("https://playground.4geeks.com/contact/agendas/username/contacts/"+id,option)
         .then((resp) => resp.json())
         .then((data)=> console.log('UPDATED CONTACT', data))
-      }
+      } 
 
         const deleteContact = (id) => {
           if(!id) alert("there is no ID")
@@ -93,7 +93,7 @@ export const ContactSubmit = () => {
             Delete
             </button>
           </Link>
-          
         </div>
 )};
+
 
